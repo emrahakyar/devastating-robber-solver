@@ -2,12 +2,19 @@
 
 Exact least-fixed-point solver for the **Devastating Robber game** studied in the manuscript *Cops and Devastating Robber Game on Graphs* by Nazlıcan Çakmak and Emrah Akyar.
 
-The program reproduces the finite Cartesian-grid computations reported in the paper and can extract a state-dependent witness strategy for a certified winning initial cop placement. The implementation uses only the Python standard library.
+The main program reproduces the finite Cartesian-grid computations reported in the paper and can extract a state-dependent witness strategy for a certified winning initial cop placement. The main solver uses only the Python standard library.
 
 ## Requirements
 
+For the Cartesian-grid solver:
+
 - Python 3
 - No third-party packages
+
+For the auxiliary exhaustive verification of connected unlabeled graphs of orders 5–8:
+
+- Python 3
+- NetworkX (`python -m pip install networkx`)
 
 ## Reproduce the exact small-grid theorem
 
@@ -61,6 +68,31 @@ python devastating_solver.py --verify-one-cop-table
 ```
 
 This computation is substantially slower than the small-grid verification.
+
+## Exhaustive connected-graph verification through order 8
+
+The paper also reports the exhaustive connected-unlabeled-graph counts
+
+| Order | Connected unlabeled graphs | Graphs with `c_v = 2` | Graphs with `c_v >= 3` |
+|---:|---:|---:|---:|
+| 5 | 21 | 0 | 0 |
+| 6 | 112 | 2 | 0 |
+| 7 | 853 | 18 | 0 |
+| 8 | 11117 | 233 | 0 |
+
+These values can be reproduced with
+
+```bash
+python verify_small_graphs.py --progress
+```
+
+For orders at most seven, the script uses NetworkX's Graph Atlas. For order eight, it starts from every connected seven-vertex atlas graph, adds one new vertex with every possible nonempty neighborhood, and removes isomorphic duplicates exactly. This is exhaustive because every connected graph has a non-cut vertex, so every connected eight-vertex graph can be obtained as such a one-vertex extension of a connected seven-vertex graph.
+
+The script then calls the same exact least-fixed-point solver used for the grid computations. It first tests one cop; whenever one cop loses, it tests two cops. To check only the graph-generation counts, without solving the game, use
+
+```bash
+python verify_small_graphs.py --enumerate-only --progress
+```
 
 ## Repository
 
