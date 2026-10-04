@@ -8,3 +8,4 @@ authors:
   - family-names: "Akyar"
     given-names: "Emrah"
 repository-code: "https://github.com/emrahakyar/devastating-robber-solver"
+license: MIT
