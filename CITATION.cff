@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the accompanying manuscript."
+title: "Devastating Robber Solver"
+type: software
+authors:
+  - family-names: "Çakmak"
+    given-names: "Nazlıcan"
+  - family-names: "Akyar"
+    given-names: "Emrah"
+repository-code: "https://github.com/emrahakyar/devastating-robber-solver"
