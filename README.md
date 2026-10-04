@@ -71,3 +71,9 @@ Repository: <https://github.com/emrahakyar/devastating-robber-solver>
 If you use this code in academic work, please cite the accompanying manuscript:
 
 > Nazlıcan Çakmak and Emrah Akyar, *Cops and Devastating Robber Game on Graphs*.
+
+Citation metadata are also provided in `CITATION.cff`.
+
+## License
+
+This software is released under the [MIT License](LICENSE).
