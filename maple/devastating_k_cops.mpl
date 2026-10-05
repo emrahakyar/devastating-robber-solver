@@ -1,5 +1,3 @@
-restart:
-
 with(GraphTheory):
 
 # ================================================================
@@ -32,7 +30,7 @@ with(GraphTheory):
 # ================================================================
 
 DevastatingKCops := proc(G, k)
-    local V, n, Adj, Configs, Raw, t, i, C,
+    local V, n, Adj, Configs, Raw, t, i, q, C,
           Deleted, LegalConfig, MoveTargets, SolveW,
           r, ok, W0, placement;
 
