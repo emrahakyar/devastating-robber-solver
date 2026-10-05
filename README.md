@@ -16,6 +16,10 @@ For the auxiliary exhaustive verification of connected unlabeled graphs of order
 - Python 3
 - NetworkX (`python -m pip install networkx`)
 
+For the independent Maple implementation:
+
+- Maple with the `GraphTheory` package
+
 ## Reproduce the exact small-grid theorem
 
 ```bash
@@ -93,6 +97,20 @@ The script then calls the same exact least-fixed-point solver used for the grid 
 ```bash
 python verify_small_graphs.py --enumerate-only --progress
 ```
+
+## Independent Maple implementation
+
+The directory [`maple/`](maple/) contains an independent Maple implementation of the same exact least-fixed-point decision procedure. It accepts an arbitrary finite simple undirected graph created with Maple's `GraphTheory` package.
+
+For a graph `G` and a nonnegative integer `k`, run
+
+```maple
+ok, P := DevastatingKCops(G, k);
+```
+
+If `ok = true`, `P` is one certified winning initial `k`-cop placement. If `ok = false`, no `k`-cop initial placement is winning. The Maple implementation is deliberately written for transparency and independent verification; the Python bitset solver remains the reference implementation for the larger exhaustive computations.
+
+See [`maple/README.md`](maple/README.md) for usage and regression tests.
 
 ## Repository
 
