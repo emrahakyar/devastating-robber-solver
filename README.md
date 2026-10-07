@@ -98,6 +98,16 @@ The script then calls the same exact least-fixed-point solver used for the grid 
 python verify_small_graphs.py --enumerate-only --progress
 ```
 
+## General solver for arbitrary graphs
+
+The directory [`general_graph/`](general_graph/) contains a general-purpose version of the exact least-fixed-point solver for arbitrary finite simple graphs with vertex set `1,2,...,n`.
+
+The program `devastating_solver_general.py` accepts the graph by an edge list or from a graph file, can test prescribed initial cop placements, search for all winning initial placements, compute `c_v(G)`, and export reachable state-dependent witness strategies.
+
+This program uses the same exact fixed-point method as the main Python solver; it is a general-purpose interface rather than an independent implementation.
+
+See [`general_graph/README.md`](general_graph/README.md) for detailed usage instructions and examples.
+
 ## Independent Maple implementation
 
 The directory [`maple/`](maple/) contains an independent Maple implementation of the same exact least-fixed-point decision procedure. It accepts an arbitrary finite simple undirected graph created with Maple's `GraphTheory` package.
